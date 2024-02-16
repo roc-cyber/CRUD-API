@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 //const Product = require('./models/product.model.js');
 const productRoute = require('./routes/product.route.js');
+require('dotenv').config();
+
 
 const PORT = 3000;
 const app = express();
 
-mongoose.connect('mongodb+srv://roccyber950:wCWQjiyiUuqciVQr@cluster0.aras1er.mongodb.net/Node-API?retryWrites=true&w=majority').
+mongoose.connect(process.env.MONGODB_URI).
 then(()=> console.log('Connected to MongoDB')).
 catch((err) => console.error("Error connecting to MongoDB",err.message));
 
